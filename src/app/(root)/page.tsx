@@ -9,9 +9,10 @@ export default function Home() {
   const session = useSession();
   const onOpen = useStoreModal((state) => state.onOpen);
   const isOpen = useStoreModal((state) => state.isOpen);
+  
 
   useEffect(() => {
-    if (isOpen) {
+    if (!isOpen) {
       onOpen();
     }
   }, [isOpen, onOpen]);

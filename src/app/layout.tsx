@@ -1,10 +1,10 @@
 "use client";
-import ModalProvider from "@/providers/modal-provider";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
+import ModalProvider from "@/providers/modal-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
