@@ -1,15 +1,24 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+"use client";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
+
+import Avatar from "@/components/ui/Avatar";
+import { useStoreModal } from "@/hooks/use-store-modal";
 
 export default function Home() {
-  // To Change title Dynamiclly
-  // useEffect(() => {
-  //   document.title = "HI AMER"
-  // },[])
+  const session = useSession();
+  const onOpen = useStoreModal((state) => state.onOpen);
+  const isOpen = useStoreModal((state) => state.isOpen);
+
+  useEffect(() => {
+    if (isOpen) {
+      onOpen();
+    }
+  }, [isOpen, onOpen]);
   return (
     <div>
-      Hi From Home Page
-      <Button>Hello</Button>
+      <Avatar image={session.data?.user?.image} />
+      RootPage
     </div>
   );
 }

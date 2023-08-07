@@ -1,8 +1,10 @@
-"use client"
-import "./globals.css";
+"use client";
+import ModalProvider from "@/providers/modal-provider";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import { Inter } from "next/font/google";
+
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          <ModalProvider />
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
